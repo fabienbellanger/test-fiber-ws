@@ -92,5 +92,5 @@ func serveWs(hub *Hub, c *websocket.Conn) {
 	client.hub.register <- client
 
 	go client.readPump()
-	client.writePump()
+	go client.writePump()
 }
