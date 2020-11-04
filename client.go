@@ -91,6 +91,6 @@ func serveWs(hub *Hub, c *websocket.Conn) {
 	client := &Client{hub: hub, conn: c, send: make(chan []byte, 256)}
 	client.hub.register <- client
 
-	go client.readPump()
 	go client.writePump()
+	client.readPump()
 }
